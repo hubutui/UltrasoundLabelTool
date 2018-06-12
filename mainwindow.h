@@ -32,6 +32,10 @@ private slots:
 
     void on_pushButtonReadProcess_clicked();
 
+    void on_radioButtonYes_toggled(bool checked);
+
+    void on_radioButtonNo_toggled(bool checked);
+
 private:
     Ui::MainWindow *ui;
 
@@ -42,6 +46,8 @@ private:
     // 当前图像文件的索引
     QStringList::iterator currentIter;
     int currentIdx;
+    // 当前图像的标签
+    int currentValue;
     // 标签文件名称
     QString csvFileName;
     // 存储所有标签的字典
@@ -54,15 +60,19 @@ private:
     void setCsvFileName(const QString &csvFileName);
     void setCurrentIdx(const int &idx);
     void setLabel(const QMap<QString, int> &map);
+    void setCurrentValue(const int &value);
 
     QString getDirName(void) const;
     QStringList getImageFileNameList(void) const;
     QString getCsvFileName(void) const;
     int getCurrentIdx(void) const;
     QMap<QString, int> getLabel(void) const;
+    int getCurrentValue(void) const;
 
     QMap<QString, int> readCsvFile(const QString &csvFileName);
     void writeCsvFile(const QString &csvFileName, const QMap<QString, int> &map);
+
+    void updateScene(void);
 };
 
 #endif // MAINWINDOW_H
