@@ -38,23 +38,7 @@ void MainWindow::on_actionOpen_triggered()
     } else {
         setCurrentIdx(0);
     }
-
-    // create a QImage object
-    QImage image(workDir.absoluteFilePath(imageFileNameList.at(getCurrentIdx())));
-
-    // create a QPixmap object from QImage
-    QPixmap pixmap = QPixmap::fromImage(image);
-    scene = new QGraphicsScene(this);
-    scene->clear();
-    // add image to scene
-    scene->addPixmap(pixmap);
-    // set visible rectangle
-    scene->setSceneRect(pixmap.rect());
-    // important attach QGraphicsView with QGraphicsScene
-    ui->graphicsView->setScene(scene);
-
-    // 显示文件名称
-    ui->labelImageFileName->setText(getImageFileNameList().at(getCurrentIdx()));
+    updateScene();
 }
 
 void MainWindow::setDirName(const QString &dirName)
@@ -246,6 +230,9 @@ void MainWindow::on_actionSave_triggered()
     }
     writeCsvFile(getCsvFileName(),
                  getLabel());
+    QMessageBox::information(this,
+                             tr(""),
+                             tr("保存成功！"));
 }
 
 void MainWindow::on_pushButtonReadProcess_clicked()
@@ -254,7 +241,9 @@ void MainWindow::on_pushButtonReadProcess_clicked()
                                                 tr("打开文件"),
                                                 getDirName()));
 
-    readCsvFile(getCsvFileName());
+    setLabel(readCsvFile(getCsvFileName()));
+    setCurrentIdx(label.size() - 1);
+    updateScene();
 }
 
 void MainWindow::on_radioButtonYes_toggled(bool checked)
