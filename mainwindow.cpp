@@ -173,6 +173,12 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_pushButtonPrev_clicked()
 {
+    if (getDirName().isEmpty()) {
+        QMessageBox::information(this,
+                                 tr("警告"),
+                                 tr("数据都没有你瞎点什么呢！"));
+        return;
+    }
     // 更新标签信息
     QString key = imageFileNameList.at(getCurrentIdx());
     int value= getCurrentValue();
@@ -199,6 +205,13 @@ void MainWindow::on_pushButtonPrev_clicked()
 
 void MainWindow::on_pushButtonNext_clicked()
 {
+    if (getDirName().isEmpty()) {
+        QMessageBox::information(this,
+                                 tr("警告"),
+                                 tr("数据都没有你瞎点什么呢！"));
+        return;
+    }
+
     // 更新标签信息
     QString key = imageFileNameList.at(getCurrentIdx());
     int value= getCurrentValue();
