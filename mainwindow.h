@@ -6,6 +6,7 @@
 #include <QStringList>
 #include <QGraphicsScene>
 #include <QMap>
+#include "dialoghelp.h"
 
 namespace Ui {
 class MainWindow;
@@ -36,6 +37,8 @@ private slots:
 
     void on_radioButtonNo_toggled(bool checked);
 
+    void on_actionHelp_triggered();
+
 private:
     Ui::MainWindow *ui;
 
@@ -52,8 +55,8 @@ private:
     QString csvFileName;
     // 存储所有标签的字典
     QMap<QString, int> label;
-
     QGraphicsScene *scene;
+    DialogHelp *dlgHelp;
 
     void setDirName(const QString &dirName);
     void setImageFileNameList(const QStringList &fileNameList);

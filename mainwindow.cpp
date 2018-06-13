@@ -264,3 +264,10 @@ void MainWindow::on_radioButtonNo_toggled(bool checked)
         setCurrentValue(1);
     }
 }
+
+void MainWindow::on_actionHelp_triggered()
+{
+    dlgHelp = new DialogHelp(this);
+
+    dlgHelp->show();
+}
