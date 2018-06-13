@@ -238,6 +238,13 @@ void MainWindow::on_actionSave_triggered()
 
 void MainWindow::on_pushButtonReadProcess_clicked()
 {
+    if (getDirName().isEmpty()) {
+        QMessageBox::information(this,
+                                 tr("警告"),
+                                 tr("请先打开数据目录！"));
+        return;
+    }
+
     setCsvFileName(QFileDialog::getOpenFileName(this,
                                                 tr("打开文件"),
                                                 getDirName()));
