@@ -37,6 +37,7 @@ void MainWindow::on_actionOpen_triggered()
         QMessageBox::information(this,
                                  tr("警告"),
                                  tr("该目录下无任何图像文件！请选择正确的目录．"));
+        setDirName("");
         return;
     } else {
         setCurrentIdx(0);
