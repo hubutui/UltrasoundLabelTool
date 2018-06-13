@@ -229,10 +229,25 @@ void MainWindow::on_actionSave_triggered()
                                                     tr("保存文件"),
                                                     getDirName()));
     }
+
+    if (getCsvFileName().isEmpty()) {
+        QMessageBox::information(this,
+                                 tr("警告"),
+                                 tr("无效的文件名！"));
+        return;
+    }
+
+    if (label.isEmpty()) {
+        QMessageBox::information(this,
+                                 tr("警告"),
+                                 tr("啥都没有你想保存什么？"));
+        return;
+    }
+
     writeCsvFile(getCsvFileName(),
                  getLabel());
     QMessageBox::information(this,
-                             tr(""),
+                             tr("保存进度"),
                              tr("保存成功！"));
 }
 
