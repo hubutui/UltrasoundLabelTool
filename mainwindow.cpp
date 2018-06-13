@@ -221,8 +221,6 @@ void MainWindow::on_pushButtonNext_clicked()
 
 void MainWindow::on_actionSave_triggered()
 {
-    qDebug() << "保存的标签：\n" << getLabel() << endl;
-
     if (getCsvFileName().isEmpty()) {
         setCsvFileName(QFileDialog::getSaveFileName(this,
                                                     tr("保存文件"),
