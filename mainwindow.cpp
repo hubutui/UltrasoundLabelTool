@@ -271,3 +271,13 @@ void MainWindow::on_actionHelp_triggered()
 
     dlgHelp->show();
 }
+
+void MainWindow::on_actionQt_triggered()
+{
+    QApplication::aboutQt();
+}
+
+void MainWindow::on_actionAbout_triggered()
+{
+    QMessageBox::about(this, tr("关于"), tr("本程序由 Qt 驱动，在 BSD 许可协议下发布．"));
+}
